@@ -1,0 +1,65 @@
+
+
+
+
+.container {
+    background: #1B1B1B;
+    display: grid;
+    grid-template-columns: 50% auto;
+}
+.col {
+    padding: .4em 1.3em;
+}
+.container2 {
+    background: #1B1B1B;
+    display: grid;
+    grid-template-columns: 90% auto;
+}
+.col2 {
+   
+    padding: .4em 1.3em;
+    padding-left: 8em;
+   
+}
+.color-dark {
+/* background: #2885C4; */
+}
+.color-light {
+  /*  background: #57B3F1; */
+}
+
+input.txt {
+    border: 0;
+    padding:1em;
+    width: 80%;
+    margin-bottom: 2em;
+   
+
+}
+
+input.btn {
+    border: 0;
+    display: block;
+    padding: 1em 3em;
+    background: #A5F883;
+    color: #FFFFFF;
+    margin-bottom: 1em;
+   
+    cursor: pointer;
+}
+.life-container {
+    background : #ebebeb;  color: #2E2E2E;
+    padding: .5em;
+    font-weight: bold;
+   
+    
+    cursor: row-resize;
+}
+.book-panel{
+    min-height: 200px;  
+}
+.images{
+    background-image: url("https://material.angular.io/assets/img/examples/shiba1.jpg");
+    background-size: cover;
+}
+

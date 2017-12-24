@@ -1,0 +1,12 @@
+
+<h1 mat-dialog-title style="color: #FF6B6B">Warning !</h1>
+<div mat-dialog-content style="color: #FF6B6B">
+  <p>Are you sure you want to delete the book {{data.title}} ?</p>
+</div>
+<div mat-dialog-actions >
+	<button type="button" mat-raised-button style="background-color: #FF6B6B" [mat-dialog-close]="true" tabindex="2">Ok</button>
+	<button mat-raised-button color="accent" (click)="onNoClick()" tabindex="-1">No Thanks</button>
+</div>
+  
+
+

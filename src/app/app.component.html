@@ -1,0 +1,125 @@
+<!--The content below is only a placeholder and can be replaced.-->
+
+<mat-toolbar color="primary" style="margin-top:-3%">
+  <mat-toolbar-row class="spans">
+    <span>Book Library</span>
+      <span class="example-spacer"></span> 
+        <button mat-button routerLink="" style="font-size: 0.7em; ">Home</button>
+      <button mat-button routerLink="home" style="font-size: 0.7em; ">Add New Book</button>   
+    </mat-toolbar-row>
+ </mat-toolbar>
+
+  <div  [@slideInOutAnimation]="getRouteAnimation(route)">
+    <router-outlet #route="outlet"></router-outlet>
+       </div>   
+         <div class= "container color-light" >  
+       <div class="col">
+    </div>
+ </div>
+     <div class= "container2 color-light" > 
+    
+        
+       
+          <div class="col2"  [@slideUpDownAnimation]="contactsArr.length" >
+        <mat-accordion >
+           <mat-expansion-panel  (closed)="panelCloseState(i)"  [disabled]="isDisabled" class="life-container" *ngFor="let contact of contactsArr; let i = index">
+              <mat-expansion-panel-header  >  
+                <mat-panel-title class="spans">
+                   <span>Tilte : {{ contact.title | capitalizePipe}}</span>    
+                       </mat-panel-title>
+                         <mat-panel-description >
+                            <span class="example-spacer"></span>
+                              <mat-icon style="color:#4DB6AC">edit</mat-icon> 
+                            <mat-icon style="color:#4DB6AC">delete</mat-icon>
+                          </mat-panel-description>      
+                        </mat-expansion-panel-header >
+                      <div style="padding-top:1em" class="spans">
+                    <span  >Autuor :  {{contact.autuor| capitalizePipe}}</span>
+                  </div>
+                <div style="padding-top:2.1em;padding-bottom: 2.1em">
+             <span  class="spans">Date : {{ contact.date | date}}</span>                   
+          </div>
+                 
+            <mat-accordion>
+              <mat-expansion-panel [expanded]="panelOpenState " class="life-container"(opened)="panelOpenStateFunck()"
+                (closed)="panelCloseState(i)" (click)="changeCtrlName(i)"  >
+                   <mat-expansion-panel-header>
+                     <mat-panel-title>
+                    <span>Update</span> 
+                  </mat-panel-title>
+                </mat-expansion-panel-header>
+                       
+<mat-horizontal-stepper  *ngIf="panelOpenState &&  i == ctrlChange"  [linear]="true" color="accent" >
+  <mat-step [stepControl]="titleFormGroup" >
+    <form [formGroup]="titleFormGroup"  >
+      <ng-template matStepLabel>Update Title</ng-template> 
+        <mat-form-field>
+           <input matInput    #input minlength="4"  pattern="[a-zA-Z ]*"  [formControl]="titlePattern"
+              [(ngModel)]="contact.title"  placeholder="Update The Title"
+                 formControlName="titleCtrl" required>
+                    <mat-error  style="font-size:1.2em" *ngIf="titlePattern.invalid">{{titleFilter(i)}}</mat-error>
+                 </mat-form-field>
+              <div style="padding-top: 1em">
+            <button mat-raised-button color="accent" matStepperNext  >Next</button>
+        </div>
+     </form>
+  </mat-step> 
+
+ <mat-step [stepControl]="autourFormGroup">
+    <form [formGroup]="autourFormGroup">
+      <ng-template matStepLabel>Update Autuor</ng-template>
+        <mat-form-field>
+          <input matInput #input minlength="4" pattern="[a-zA-Z ]*"
+            [formControl]="patterns" [(ngModel)]="contact.autuor" placeholder="Autuor" formControlName="autourCtrl" required>
+              <mat-error  *ngIf="patterns.invalid">{{getErrorMessage()}}</mat-error>
+                </mat-form-field>
+              <div style="padding-top: 1em">
+            <button mat-raised-button color="accent" matStepperPrevious>Back</button>
+         <button mat-raised-button color="accent" matStepperNext >Next</button>
+       </div> 
+    </form>
+  </mat-step>
+
+ <mat-step [stepControl]="dateFormGroup">
+      <form [formGroup]="dateFormGroup">
+        <ng-template matStepLabel>Update Date</ng-template>
+           <mat-form-field class="example-full-width">
+               <input matInput [min]="minDate" [max]="maxDate" [(ngModel)]="contact.date" formControlName="dateCtrl"
+                  [matDatepickerFilter]="myFilter" [matDatepicker]="picker" placeholder="Choose a date" 
+                    required>
+                      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                  <mat-error>This field is required</mat-error>
+               </mat-form-field>
+             <div style="padding-top: 1em">
+           <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+     </div>
+   </form>
+</mat-step>
+
+<mat-step>
+   <ng-template matStepLabel>Done</ng-template>
+      You are now done.
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+        <button type="submit" mat-button (click)="updateBook(i)">Save</button>
+     </div>
+   </mat-step>
+</mat-horizontal-stepper>
+                 
+              </mat-expansion-panel>
+            
+            </mat-accordion>
+            <br>
+            <button mat-raised-button style="background-color:#FF6B6B; " (click)="removeContact(i)" >Delete Book</button>
+                            
+          </mat-expansion-panel>
+        </mat-accordion>
+        <br>
+      
+     
+    </div>
+    </div>
+   
+
