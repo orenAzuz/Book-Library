@@ -1,26 +1,26 @@
 
 
-// import { NgModule } from '@angular/core';
-// import { CommonModule } from '@angular/common';
-// import { AppRoutingModule } from './app-routing.module';
-// import { MatButtonModule,MatToolbarModule ,MatInputModule,MatDatepickerModule,
-//     MatNativeDateModule,MatExpansionModule ,MatProgressSpinnerModule,MatCardModule,
-//     MatCheckboxModule,MatStepperModule,MatDialogModule,MatIconModule } from '@angular/material';
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { AppRoutingModule } from './app-routing.module';
+import { MatButtonModule,MatToolbarModule ,MatInputModule,MatDatepickerModule,
+    MatNativeDateModule,MatExpansionModule ,MatProgressSpinnerModule,MatCardModule,
+    MatCheckboxModule,MatStepperModule,MatDialogModule,MatIconModule } from '@angular/material';
 
-// @NgModule({
+@NgModule({
    
-//     imports:[MatButtonModule,MatToolbarModule,MatInputModule,
-//         MatDatepickerModule,MatNativeDateModule,MatExpansionModule, 
-//         MatProgressSpinnerModule,MatCardModule,MatCheckboxModule,
-//         MatStepperModule,MatDialogModule,MatIconModule ],
+    imports:[MatButtonModule,MatToolbarModule,MatInputModule,
+        MatDatepickerModule,MatNativeDateModule,MatExpansionModule, 
+        MatProgressSpinnerModule,MatCardModule,MatCheckboxModule,
+        MatStepperModule,MatDialogModule,MatIconModule ],
 
-//     exports:[MatButtonModule,MatToolbarModule,MatInputModule,
-//         MatDatepickerModule,MatNativeDateModule, MatExpansionModule,
-//         MatProgressSpinnerModule,MatCardModule,MatCheckboxModule,
-//         MatStepperModule,MatDialogModule,MatIconModule ],
+    exports:[MatButtonModule,MatToolbarModule,MatInputModule,
+        MatDatepickerModule,MatNativeDateModule, MatExpansionModule,
+        MatProgressSpinnerModule,MatCardModule,MatCheckboxModule,
+        MatStepperModule,MatDialogModule,MatIconModule ],
 
-// })
+})
 
-// export class MaterialModule {
+export class MaterialModule {
 
-// }
+}

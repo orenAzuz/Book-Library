@@ -9,7 +9,7 @@ import { HomeComponent } from './home/home.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DataService } from './data.service';
-//import { MaterialModule } from './material.module';
+import { MaterialModule } from './material.module';
 import {InterceptorModule} from './http-request-iterceptor'
 import { HttpClientModule} from '@angular/common/http';
 import { DefaultComponent } from './default/default.component';
@@ -25,9 +25,7 @@ import { PinsComponent} from './pins-component/pins-component.component';
 import { SlideComponent } from './slide/slide.component';
 import { CarouselArrowsComponent } from './arrows/arrows.component';
 import { Routes, RouterModule } from '@angular/router';
-import { MatButtonModule,MatToolbarModule ,MatInputModule,MatDatepickerModule,
-  MatNativeDateModule,MatExpansionModule ,MatProgressSpinnerModule,MatCardModule,
-  MatCheckboxModule,MatStepperModule,MatDialogModule,MatIconModule } from '@angular/material';
+
 
 @NgModule({
   declarations: [
@@ -50,14 +48,11 @@ import { MatButtonModule,MatToolbarModule ,MatInputModule,MatDatepickerModule,
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-   // MaterialModule,
+    MaterialModule,
     HttpClientModule,
     InterceptorModule,
     RouterModule,
-    MatButtonModule,MatToolbarModule,MatInputModule,
-    MatDatepickerModule,MatNativeDateModule,MatExpansionModule, 
-    MatProgressSpinnerModule,MatCardModule,MatCheckboxModule,
-    MatStepperModule,MatDialogModule,MatIconModule
+   
    
     
   ],
