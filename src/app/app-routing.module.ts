@@ -9,9 +9,10 @@ const routes: Routes = [
   component:DefaultComponent, data: { animation: 'default' }},
   { pathMatch: 'full', path: "home",
   component:HomeComponent , data: { animation: 'home' }  
-  }
+  },
+  
 ];
-
+ 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
@@ -23,4 +24,6 @@ const routes: Routes = [
      // attach the fade in animation to the host (root) element of this component
      host: { '[@slideInOutAnimation]': '' }
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+ 
+}
