@@ -55,8 +55,9 @@ import { SpacePipePipe } from './space-pipe.pipe';
     InterceptorModule,
     RouterModule,
     
-   
     
+   
+     
   ],
 
   entryComponents: [RemoveBookComponent],

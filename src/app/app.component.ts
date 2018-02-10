@@ -5,7 +5,7 @@ import { HomeComponent } from './home/home.component';
 
 import {RemoveBookComponent} from './remove-book/remove-book.component';
 import {FormBuilder, FormGroup, NgForm,Validators,FormControl,ValidatorFn,AbstractControl} from '@angular/forms';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA,MatExpansionPanel} from '@angular/material';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA,MatExpansionPanel,MatSnackBar} from '@angular/material';
 import { forbiddenNameValidator,ForbiddenValidatorDirective } from './forbidden-validator-directive.directive';
 import { slideUpDownAnimation,slideInOutAnimation} from './_animations/index';
 @Component({
@@ -39,7 +39,7 @@ export class AppComponent {
   fvd = new ForbiddenValidatorDirective;
 
   constructor(private _data: DataService,private _formBuilder: FormBuilder,
-    public dialog: MatDialog) {
+    public dialog: MatDialog,public snackBar: MatSnackBar) {
       
    
    }
@@ -68,7 +68,7 @@ export class AppComponent {
   myFilter = (d: Date): boolean => {
     const day = d.getDay();
     // Prevent Saturday and Sunday from being selected.
-    return day !== 0 && day !== 6;
+    return  day !== 6;
   }
 
   
@@ -93,7 +93,11 @@ export class AppComponent {
            
   }
 
-
+  openSnackBar(message: string, action: string) {
+    this.snackBar.open(message, action, {
+      duration: 3500,
+    });
+  }
 
 
     counter:number = 0;
@@ -219,6 +223,7 @@ panelOpenStateFunck(){
     this.panelOpenState = false;
     this.saveUpdate = false;
    this._data.updateTitleV();
+   this.openSnackBar("Updated sucssesfuly the book ",this.contactsArr[index].title);
   }
   minDate = new Date();
   maxDate = new Date(2020, 0, 1);

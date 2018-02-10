@@ -34,7 +34,9 @@ validValue(){
   console.log(this.books.length);
   if (this.books.length <= 1 ){
     if(this.index === -1 && this.books.length === 1){
+      w += '^';
       w += this.books[0].title;
+      w += '$';
       }else{
           w += '0';
         }

@@ -5,6 +5,7 @@ import {FormBuilder, FormGroup, NgForm,Validators,FormControl,ValidatorFn,Abstra
 import { forbiddenNameValidator,ForbiddenValidatorDirective } from '../forbidden-validator-directive.directive';
 import { slideInOutAnimation } from '../_animations/index';
 import { Router, ActivatedRoute } from '@angular/router';
+import { MatSnackBar } from '@angular/material';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -33,7 +34,7 @@ export class HomeComponent implements OnInit {
   boo :boolean = true;
 
   fvd = new ForbiddenValidatorDirective;
-  constructor (private _data:DataService,private route: ActivatedRoute,private router: Router,){
+  constructor (private _data:DataService,private route: ActivatedRoute,private router: Router ,public snackBar: MatSnackBar){
     this._data.invokeEventAsObs.subscribe(value => {
       this.setTitleValidations();
     })
@@ -89,7 +90,7 @@ export class HomeComponent implements OnInit {
 createProfile(){
   this._data.createProfile(this.autuor,this.title,this.date);
   this._data.contact.subscribe(res => this.contactsArr = res);
-  
+  this.openSnackBar("Congratulations on creating the book" , this.title);
   setTimeout(() => {
   this.router.navigate(['']);
   },2000);
@@ -122,6 +123,12 @@ titleFilter(i){
 }
 cancel(){
   this.router.navigate(['']);
+}
+
+openSnackBar(message: string, action: string) {
+  this.snackBar.open(message, action, {
+    duration: 3500,
+  });
 }
 
 

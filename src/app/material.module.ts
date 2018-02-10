@@ -5,19 +5,19 @@ import { CommonModule } from '@angular/common';
 import { AppRoutingModule } from './app-routing.module';
 import { MatButtonModule,MatToolbarModule ,MatInputModule,MatDatepickerModule,
     MatNativeDateModule,MatExpansionModule ,MatProgressSpinnerModule,MatCardModule,
-    MatCheckboxModule,MatStepperModule,MatDialogModule,MatIconModule } from '@angular/material';
+    MatCheckboxModule,MatStepperModule,MatDialogModule,MatIconModule,MatSnackBarModule } from '@angular/material';
 
 @NgModule({
    
     imports:[MatButtonModule,MatToolbarModule,MatInputModule,
         MatDatepickerModule,MatNativeDateModule,MatExpansionModule, 
         MatProgressSpinnerModule,MatCardModule,MatCheckboxModule,
-        MatStepperModule,MatDialogModule,MatIconModule ],
+        MatStepperModule,MatDialogModule,MatIconModule,MatSnackBarModule ],
 
     exports:[MatButtonModule,MatToolbarModule,MatInputModule,
-        MatDatepickerModule,MatNativeDateModule, MatExpansionModule,
+        MatDatepickerModule,MatNativeDateModule, MatExpansionModule, 
         MatProgressSpinnerModule,MatCardModule,MatCheckboxModule,
-        MatStepperModule,MatDialogModule,MatIconModule ],
+        MatStepperModule,MatDialogModule,MatIconModule,MatSnackBarModule ],
 
 })
 
