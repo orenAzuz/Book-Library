@@ -27,23 +27,37 @@ export class ForbiddenValidatorDirective implements Validator {
 
   books = [];
   index:number;
-
+ 
 validValue(){
-  let w = '\b|';
+  let w = '\b|^ |';
   let n =1;
+  console.log(this.books.length);
+  if (this.books.length <= 1 ){
+    if(this.index === -1 && this.books.length === 1){
+      w += this.books[0].title;
+      }else{
+          w += '0';
+        }
+        }else{  
+          w = '\b|^ |';
   if(this.index == this.books.length -1){n=2}
+
   for(let i = 0; this.books.length > i; i++){
   
 
-  if(i != this.index ){
+  if(i != this.index){
+    w += '^';
     w += this.books[i].title;
+    w += '$';
     if(i < this.books.length -n){
       w += "|";
     }
   }
 
 }
-w += '|\b';
+        }
+w += '| $|\b';
+
 console.log(w);
 return w;
 }

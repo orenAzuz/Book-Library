@@ -25,7 +25,7 @@
            <mat-expansion-panel  (closed)="panelCloseState(i)"  [disabled]="isDisabled" class="life-container" *ngFor="let contact of contactsArr; let i = index">
               <mat-expansion-panel-header  >  
                 <mat-panel-title class="spans">
-                   <span>Tilte : {{ contact.title | capitalizePipe}}</span>    
+                   <span>Title : {{ contact.title | capitalizePipe}}</span>    
                        </mat-panel-title>
                          <mat-panel-description >
                             <span class="example-spacer"></span>
@@ -55,7 +55,7 @@
       <ng-template matStepLabel>Update Title</ng-template> 
         <mat-form-field>
            <input matInput    #input minlength="4"  pattern="[a-zA-Z ]*"  [formControl]="titlePattern"
-              [(ngModel)]="contact.title"  placeholder="Update The Title"
+              [(ngModel)]="contact.title" (ngModelChange)="contact.title=$event"  placeholder="Update The Title"
                  formControlName="titleCtrl" required>
                     <mat-error  style="font-size:1.2em" *ngIf="titlePattern.invalid">{{titleFilter(i)}}</mat-error>
                  </mat-form-field>
@@ -92,8 +92,8 @@
                   <mat-error>This field is required</mat-error>
                </mat-form-field>
              <div style="padding-top: 1em">
-           <button mat-button matStepperPrevious>Back</button>
-        <button mat-button matStepperNext>Next</button>
+           <button mat-raised-button color="accent" matStepperPrevious>Back</button>
+        <button mat-raised-button color="accent" matStepperNext>Next</button>
      </div>
    </form>
 </mat-step>
@@ -102,8 +102,8 @@
    <ng-template matStepLabel>Done</ng-template>
       You are now done.
         <div>
-          <button mat-button matStepperPrevious>Back</button>
-        <button type="submit" mat-button (click)="updateBook(i)">Save</button>
+          <button mat-raised-button color="accent" matStepperPrevious>Back</button>
+        <button type="submit" mat-raised-button color="accent" (click)="updateBook(i)">Save</button>
      </div>
    </mat-step>
 </mat-horizontal-stepper>

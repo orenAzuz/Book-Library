@@ -1,6 +1,8 @@
-import { Component, OnInit,Inject ,ViewChild } from '@angular/core';
+import { Component, OnInit,Inject ,ViewChild ,NgModule } from '@angular/core'; 
 import { trigger,style,transition,animate,keyframes,query, stagger } from '@angular/animations';
 import { DataService } from './data.service';
+import { HomeComponent } from './home/home.component';
+
 import {RemoveBookComponent} from './remove-book/remove-book.component';
 import {FormBuilder, FormGroup, NgForm,Validators,FormControl,ValidatorFn,AbstractControl} from '@angular/forms';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA,MatExpansionPanel} from '@angular/material';
@@ -13,6 +15,7 @@ import { slideUpDownAnimation,slideInOutAnimation} from './_animations/index';
   animations:[ slideUpDownAnimation  ,slideInOutAnimation]
       
 })
+
 export class AppComponent {
   isDisabled:boolean = false;
   isLinear = false;
@@ -129,16 +132,29 @@ initTitleValidations(i:number){
   this.fvd.validTitle(i,this.contactsArr);
   this.needleRegExp = new RegExp(this.fvd.validValue(),"i");
   this.valid = forbiddenNameValidator(this.needleRegExp);
-  this.titlePattern = new FormControl( this.title,[Validators.required,this.valid,
+
+  
+  this.titlePattern = new FormControl(this.title ,[Validators.required,this.valid,
   Validators.minLength(this.validNum),
   Validators.pattern("[a-zA-Z ]*"), ])
      
   this.titleFormGroup =   this._formBuilder.group({
-   titleCtrl: [this.title,this.valid]
+   titleCtrl: [this.title.trim(),this.valid]
       
     });
 }
-
+titleStringPrepering(s:string):string{
+  let titleRedy;
+  // if(this.title.charAt(0)===" "){
+  //    titleRedy = this.title.substr(1);
+  // }
+  // if(this.title.endsWith(" ")){
+  //   titleRedy = this.title.slice(0, -1);
+  // }
+  console.log(s);
+  console.log(s.trim());
+  return s.trim();
+}
 
 panelCloseState(i:number){
   this.panelOpenState = false;
@@ -159,13 +175,13 @@ panelOpenStateFunck(){
   this.isDisabled = true;
   
 
-}
+} 
 
 
- 
+      
   removeContact(i):void{ 
 
-
+     this.panelCloseState(i);
     let dialogRef = this.dialog.open(RemoveBookComponent, {
       width: '500px', 
     
@@ -202,6 +218,7 @@ panelOpenStateFunck(){
     this.counter = 0;
     this.panelOpenState = false;
     this.saveUpdate = false;
+   this._data.updateTitleV();
   }
   minDate = new Date();
   maxDate = new Date(2020, 0, 1);

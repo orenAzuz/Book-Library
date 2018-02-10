@@ -25,6 +25,7 @@ import { PinsComponent} from './pins-component/pins-component.component';
 import { SlideComponent } from './slide/slide.component';
 import { CarouselArrowsComponent } from './arrows/arrows.component';
 import { Routes, RouterModule } from '@angular/router';
+import { SpacePipePipe } from './space-pipe.pipe';
 
 
 @NgModule({
@@ -40,6 +41,7 @@ import { Routes, RouterModule } from '@angular/router';
     PinsComponent,
     SlideComponent,
     CarouselArrowsComponent, 
+    AppRoutingModule, SpacePipePipe
 
   ],
   imports: [ 
@@ -52,7 +54,7 @@ import { Routes, RouterModule } from '@angular/router';
     HttpClientModule,
     InterceptorModule,
     RouterModule,
-   
+    
    
     
   ],

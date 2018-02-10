@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { BehaviorSubject  } from 'rxjs/BehaviorSubject';
 import { HttpClient} from '@angular/common/http';
 @Injectable()
 export class DataService {
 
  
   private contactsArr = new BehaviorSubject<any>([]); 
-  contact = this.contactsArr.asObservable();   
+  contact = this.contactsArr.asObservable(); 
+  private invokeEvent: BehaviorSubject<any> = new BehaviorSubject([]); 
+  invokeEventAsObs = this.invokeEvent.asObservable();
   constructor(private httpClient:HttpClient) {
     console.log("constractor service")
    
@@ -73,5 +75,13 @@ export class DataService {
     
     
   }
+
+ updateTitleV(){
+
+  this.invokeEvent.next("1");
+  console.log("update title service");
+ }
+
+
 
 }

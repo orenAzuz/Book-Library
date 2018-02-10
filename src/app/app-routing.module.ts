@@ -19,6 +19,7 @@ const routes: Routes = [
 })
 @Component({
   selector: 'app-root',
+  templateUrl: './app.r.html',
   animations: [slideInOutAnimation],
   
      // attach the fade in animation to the host (root) element of this component

@@ -34,7 +34,9 @@ export class HomeComponent implements OnInit {
 
   fvd = new ForbiddenValidatorDirective;
   constructor (private _data:DataService,private route: ActivatedRoute,private router: Router,){
-
+    this._data.invokeEventAsObs.subscribe(value => {
+      this.setTitleValidations();
+    })
     this._data.contact.subscribe(res => this.contactsArr = res);
     
     if(this.contactsArr.length === 0){
@@ -50,9 +52,9 @@ export class HomeComponent implements OnInit {
     
    
   }
- 
+
   setTitleValidations(){
-    
+   
     this.fvd.validTitle(-1,this.contactsArr);
  
     this.needleRegExp = new RegExp(this.fvd.validValue(),"i");
@@ -88,8 +90,9 @@ createProfile(){
   this._data.createProfile(this.autuor,this.title,this.date);
   this._data.contact.subscribe(res => this.contactsArr = res);
   
- 
+  setTimeout(() => {
   this.router.navigate(['']);
+  },2000);
 }
 minDate = new Date();
 maxDate = new Date(2020, 0, 1);
